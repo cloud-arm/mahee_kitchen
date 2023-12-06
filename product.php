@@ -129,6 +129,26 @@ include_once("sidebar.php");
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group">
+
+                                                                        <div class="input-group">
+                                                                            <div class="input-group-addon">
+                                                                                <label> Category</label>
+                                                                            </div>
+                                                                           <select name="cat" class="form-control">
+                                                                            <?php $result = $db->prepare('SELECT * FROM category   ');
+                                                                            $result->bindParam(':id', $res);
+                                                                            $result->execute();
+                                                                            for($i=0; $row = $result->fetch(); $i++){?>
+                                                                            <option value="<?php echo $row['id']  ?>">
+                                                                        <?php echo $row['name']  ?></option>
+                                                                        <?php } ?>
+                                                                           </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-6" style="background-color: #DDDDDD;">
                                                                 <h3>Recipe</h3>
