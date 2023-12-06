@@ -22,14 +22,19 @@ for($i=0; $row = $result->fetch(); $i++){?>
     <?php }else{?>
         <a href="order.php?id=<?php echo $row['id'] ?>&invo=<?php echo date("ymdhis");?>" class="nav-link">
     <?php }?>
-        <div class="room">
+        <div class="room" <?php if($row['action'] == 1){ ?> style="background-color: rgb(var(--bg-theme));" <?php }?>>
             <span>
                 
             </span>
-            <span class="num"><?php echo $row['room_no'] ?></span>
-            <?php if($row['action'] == 1){?>
-                <span class="tot">LKR. 1000.00</span>
-            <?php }?>
+            <span class="num"<?php if($row['action'] == 1){ ?> style="color: rgb(var(--bg-black));" <?php }?>><?php echo $row['room_no'] ?></span>
+            <?php if($row['action'] == 1){             
+                $invo = $row['invoice_no'];
+                $result1 = $db->prepare("SELECT sum(amount) FROM sales_list WHERE invoice_no='$invo'");
+                $result1->bindParam(':userid', $date);
+                $result1->execute();
+                for($i=0; $row1 = $result1->fetch(); $i++){$total = $row1['sum(amount)'];}?>
+                <span class="tot">Rs. <?php echo $total ?></span>
+            <?php }?>   
         </div>
     </a>
 </div>
