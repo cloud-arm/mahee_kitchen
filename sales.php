@@ -167,7 +167,7 @@ include_once("sidebar.php");
         var qty = document.getElementById("qty_" + id).value;
 
             var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", "sales_add.php?id=" + id + "&qty=" + qty + "&invo=" + <?php echo $_GET['id']; ?>,
+            xmlHttp.open("GET", "sales_add.php?id=" + id + "&qty=" + qty + "&invo=" + <?php echo $_GET['id']; ?> + "&room_id=" + <?php echo $_GET['room_id']; ?>,
                 false); // false for synchronous request
             xmlHttp.send(null);
             document.getElementById("c_view").innerHTML = xmlHttp.responseText;

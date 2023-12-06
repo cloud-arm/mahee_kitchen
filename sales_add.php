@@ -8,6 +8,19 @@ $id=$_REQUEST['id'];
 $invo=$_REQUEST['invo'];
 $c=$_REQUEST['qty'];
 
+$room_id=$_REQUEST['room_id'];
+
+$result = $db->prepare('SELECT * FROM room WHERE  id=:id ');
+$result->bindParam(':id', $room_id);
+$result->execute();
+for($i=0; $row = $result->fetch(); $i++){ $action=$row['action']; }
+
+if($action == 0){ 
+	$sql = 'UPDATE  room SET action =?,invoice_no=? WHERE id =? ';
+	$ql = $db->prepare($sql);
+	$ql->execute(array('1',$invo,$room_id));
+ }
+
 
 $tota=0;
 $tota_qty=0;

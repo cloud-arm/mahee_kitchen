@@ -238,11 +238,11 @@ $result1 = $db->prepare("SELECT sum(amount) FROM sales_list WHERE invoice_no='$i
                             <?php echo $row['room_no']; ?>
                         </div>
                         <?php if($row['action']==1){ ?>
-                        <a href="sales.php?id=<?php echo $row['invoice_no']; ?>" class="small-box-footer">
+                        <a href="sales.php?id=<?php echo $row['invoice_no']; ?>&room_id=<?php echo $row['id']; ?>" class="small-box-footer">
                             <h4>INVOICE <i class="fa fa-arrow-circle-right"></i></h4>
                         </a>
                         <?php } if($row['action']==0){ ?>
-                            <a href="sales.php?id=<?php echo date('ymdHis'); ?>" class="small-box-footer">
+                            <a href="sales.php?id=<?php echo date('ymdHis'); ?>&room_id=<?php echo $row['id']; ?>" class="small-box-footer">
                             <h4>New Invoice <i class="fa fa-arrow-circle-right"></i></h4>
                         </a>
                         <?php } ?>
