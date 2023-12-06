@@ -6,6 +6,7 @@ $code = $_POST['code'];
 $type = $_POST['type'];
 $sell = 0;
 $cost = 0;
+$cat=0;
 
 if($type=='service'){
     $sell = $_POST['sell'];
@@ -13,6 +14,7 @@ if($type=='service'){
 
 if($type=='dish'){
     $sell = $_POST['sell'];
+    $cat=$_POST['cat'];
 }
 
 if($type=='Materials'){
@@ -21,9 +23,9 @@ if($type=='Materials'){
 
 
 // query
-$sql = "INSERT INTO products (product_name,product_code,sell_price,cost_price,type) VALUES (?,?,?,?,?)";
+$sql = "INSERT INTO products (product_name,product_code,sell_price,cost_price,type,cat_id) VALUES (?,?,?,?,?,?)";
 $ql = $db->prepare($sql);
-$ql->execute(array($name,$code,$sell,$cost,$type));
+$ql->execute(array($name,$code,$sell,$cost,$type,$cat));
 
 
 if($c=='dish'){
