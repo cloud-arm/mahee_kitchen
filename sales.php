@@ -128,7 +128,7 @@ include_once("sidebar.php");
                 false); // false for synchronous request
             xmlHttp.send(null);
             document.getElementById("c_view").innerHTML = xmlHttp.responseText;
-            document.getElementById("qty").value = "";
+            document.getElementById("qty").value = "1";
 
             document.getElementById('qty_error').style.display = "none";
             document.getElementById('successful').style.display = "block";
@@ -136,6 +136,51 @@ include_once("sidebar.php");
         }
 
     }
+
+
+
+
+    function cat_change(id) {
+    
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "sales_list_get.php?cat_id="+id+"&invo="+<?php echo $_GET['id'] ?>, false); // false for synchronous request
+            xmlHttp.send(null);
+            document.getElementById("sales_item_list").innerHTML = xmlHttp.responseText;
+
+            for (let i = 1; i < 7; i++) {
+            if(i == id) {
+                document.getElementById("cat_"+i).style.backgroundColor = "red";
+            }else{
+                document.getElementById("cat_"+i).style.backgroundColor = "black";
+            }
+        }
+
+        return xmlHttp.responseText;
+
+
+    }
+
+
+
+    function add_cart(id,cat_id) {
+        
+        var qty = document.getElementById("qty_" + id).value;
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "sales_add.php?id=" + id + "&qty=" + qty + "&invo=" + <?php echo $_GET['id']; ?>,
+                false); // false for synchronous request
+            xmlHttp.send(null);
+            document.getElementById("c_view").innerHTML = xmlHttp.responseText;
+            
+
+            console.log(cat_id);
+
+            cat_change(cat_id);
+            
+            return xmlHttp.responseText;
+    }
+
+
 
     function alert_hidd() {
         document.getElementById('qty_error').style.display = "none";
@@ -164,7 +209,7 @@ include_once("sidebar.php");
         <section class="content">
             <div class="row">
 
-                <div class="col-lg-4 col-xs-12">
+                <div class="col-md-5 col-xs-12">
                     <!-- Form Element sizes -->
                     <div class="box box-success">
                         <div class="box-header with-border">
@@ -180,10 +225,10 @@ include_once("sidebar.php");
                                         tabindex="1" onclick="alert_hidd()" autofocus>
                                         <?php  
 
-         $result = $db->prepare("SELECT * FROM products WHERE type = 'service' OR type = 'dish'");
-		$result->bindParam(':userid', $res);
-		$result->execute();
-		for($i=0; $row = $result->fetch(); $i++){ ?>
+                                          $result = $db->prepare("SELECT * FROM products WHERE type = 'service' OR type = 'dish'");
+		                                 $result->bindParam(':userid', $res);
+		                                 $result->execute();
+		                                 for($i=0; $row = $result->fetch(); $i++){ ?>
                                         <option value="<?php echo $row['id'];?>"><?php echo $row['product_name']; ?> -
                                             <?php echo $row['product_code']; ?> - Rs<?php echo $row['sell_price']; ?>
                                         </option>
@@ -193,21 +238,19 @@ include_once("sidebar.php");
                             </div>
 
 
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <div class="input-group date">
-                                        <div class="input-group-addon">
-                                            <label>Qty</label>
-                                        </div>
-                                        <input type="number" class="form-control" id="qty" name="qty" tabindex="2"
-                                            value="1" required>
-                                    </div>
-                                </div>
+                            <div>
+                                <?php $result = $db->prepare("SELECT * FROM  category");
+		                                 $result->bindParam(':userid', $res);
+		                                 $result->execute();
+		                                 for($i=0; $row = $result->fetch(); $i++){ ?>
+                                <button id="cat_<?php echo $row['id']  ?>"
+                                    onclick="cat_change('<?php echo $row['id']  ?>')" class="btn"
+                                    style="background-color: #000000; color: #fff; margin: 6px; padding: 7px; border-radius: 15px;">
+                                    <?php echo $row['name']  ?></button>
+                                <?php } ?>
                             </div>
 
-                            <div class="col-md-6">
-                                <button id="add" class="btn btn-info" onclick="test()">ADD</button>
-                            </div>
+
                             <div class="col-md-12">
 
                                 <div class="alert alert-danger alert-dismissible" id="qty_error" style="display:none;">
@@ -226,39 +269,45 @@ include_once("sidebar.php");
                                 </div>
 
                             </div>
+
+                            <div id="sales_item_list"></div>
+
+
                         </div>
                         <div id="err">
 
                         </div>
 
-                        
+
 
                         <!-- /.box-body -->
                     </div>
 
+                </div>
 
 
-                    <div class="box box-danger">
+                <div class="col-lg-7 col-xs-12">
+                    <!-- SELECT2 EXAMPLE -->
+                    <div class="box box-info">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Package</h3>
-                        </div>
-                        <div class="box-body">
+                            <h3 class="box-title">Details</h3>
 
-                            <div class="row">
-                             <?php 
-                             $result = $db->prepare("SELECT * FROM package ");
-                             $result->bindParam(':userid', $res);
-                             $result->execute();
-                             for($i=0; $row = $result->fetch(); $i++){?>
+                            <?php 	  $id=$_REQUEST['id'];	?>
+                            <!-- /.box-header -->
+                            <div class="form-group">
 
-                             <button class="btn btn-info"><?php echo $row['name'] ?></button>
-                             <?php } ?>
+                                <div id="c_view">
+
+                                    <?php  include("sales_tabel.php"); ?>
+                                </div>
                             </div>
 
-
+                            <!-- /.box -->
                         </div>
-                        <!-- /.box-body -->
+                        <!-- /.col (right) -->
                     </div>
+
+
 
                     <div class="box box-danger">
                         <div class="box-header with-border">
@@ -273,7 +322,7 @@ include_once("sidebar.php");
                                 <div class="col-lg-4 col-xs-12"><button type="button" id="2"
                                         class="btn btn-block btn-warning btn-lg n" style="color:#000000;"><i
                                             class="fa fa-credit-card"></i> CARD <p style="font-size: 14px;">[F5]</p>
-                                        </button></div>
+                                    </button></div>
                                 <div class="col-lg-4 col-xs-12"><button type="button" id="3"
                                         class="btn btn-block btn-danger btn-lg n"><i class="fa fa-repeat"></i> CREDIT <p
                                             style="font-size: 14px;">[F6]</p></button></div>
@@ -284,40 +333,6 @@ include_once("sidebar.php");
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
-
-
-                   
-
-
-
-
-                </div>
-
-
-                <div class="col-lg-8 col-xs-12">
-                    <!-- SELECT2 EXAMPLE -->
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Details</h3>
-
-                            <?php 		
-				$id=$_REQUEST['id'];
-				?>
-                            <!-- /.box-header -->
-                            <div class="form-group">
-
-                                <div id="c_view">
-
-                                    <?php
-  include("sales_tabel.php");
-?>
-                                </div>
-                            </div>
-
-                            <!-- /.box -->
-                        </div>
-                        <!-- /.col (right) -->
-                    </div>
                 </div>
 
 
@@ -490,82 +505,6 @@ $result->bindParam(':userid', $date);
     $(function() {
         //Initialize Select2 Elements
         $(".select2").select2();
-
-        //Datemask dd/mm/yyyy
-        $("#datemask").inputmask("YYYY/MM/DD", {
-            "placeholder": "YYYY/MM/DD"
-        });
-        //Datemask2 mm/dd/yyyy
-        $("#datemask2").inputmask("YYYY/MM/DD", {
-            "placeholder": "YYYY/MM/DD"
-        });
-        //Money Euro
-        $("[data-mask]").inputmask();
-
-        //Date range picker
-        $('#reservation').daterangepicker();
-        //Date range picker with time picker
-        $('#reservationtime').daterangepicker({
-            timePicker: true,
-            timePickerIncrement: 30,
-            format: 'YYYY/MM/DD h:mm A'
-        });
-        //Date range as a button
-        $('#daterange-btn').daterangepicker({
-                ranges: {
-                    'Today': [moment(), moment()],
-                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                    'This Month': [moment().startOf('month'), moment().endOf('month')],
-                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1,
-                        'month').endOf('month')]
-                },
-                startDate: moment().subtract(29, 'days'),
-                endDate: moment()
-            },
-            function(start, end) {
-                $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format(
-                    'MMMM D, YYYY'));
-            }
-        );
-
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true,
-            datepicker: true,
-            format: 'yyyy-mm-dd '
-        });
-        $('#datepicker').datepicker({
-            autoclose: true
-        });
-
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        });
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass: 'iradio_minimal-red'
-        });
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass: 'iradio_flat-green'
-        });
-
-        //Colorpicker
-        $(".my-colorpicker1").colorpicker();
-        //color picker with addon
-        $(".my-colorpicker2").colorpicker();
-
-        //Timepicker
-        $(".timepicker").timepicker({
-            showInputs: false
-        });
     });
 
 
@@ -609,6 +548,7 @@ $result->bindParam(':userid', $date);
         xmlhttp.onreadystatechange = function() {
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                 document.getElementById("c_view").innerHTML = xmlhttp.responseText;
+                document.getElementById("qty").value = "1";
             }
         }
         xmlhttp.open("GET", "sales_product_save.php?pro=" + pro + "&id=" + <?php echo $id; ?> + "", true);

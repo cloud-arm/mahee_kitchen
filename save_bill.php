@@ -47,19 +47,19 @@ $result = $db->prepare("SELECT sum(profit) FROM sales_list WHERE invoice_no = '$
         $profit = $row['sum(profit)'];
 		}
 
-$discount=$_POST['dis'];
+$discount=0;
 $amount=$amount-$discount;
 
 $date= date("Y-m-d");
 $time=date('H:i:s');
 $balance = $amount-$pay_total;
 
-$discount=$_POST['dis'];
+//$discount=$_POST['dis'];
 
 // query
-$sql = "INSERT INTO sales (invoice_number,amount,balance,profit,pay_type,pay_amount,date,customer_id,customer_name,in_date,in_time,out_date,out_time,action,discount) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO sales (invoice_number,amount,balance,profit,pay_type,pay_amount,date,customer_id,customer_name,action,discount) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 $ql = $db->prepare($sql);
-$ql->execute(array($invoice,$amount,$balance,$profit,$pay_type,$pay_total,$date,$cus_id,$cus_name,$in_date,$in_time,$date,$time,'active',$discount));
+$ql->execute(array($invoice,$amount,$balance,$profit,$pay_type,$pay_total,$date,$cus_id,$cus_name,'active',$discount));
       
       
 $sql = "UPDATE room 
