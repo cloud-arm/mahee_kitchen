@@ -22,27 +22,16 @@
     ?>
 </head>
 <body class="bg-light">
-
-    <header>
-        <nav class="navbar navbar-expand-lg bg-none">
-            <div class="container-fluid">
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <a href="invoice.php?id=<?php echo $room_id?>&invo=<?php echo $invo_id?>"><span class="navbar-toggler border-0"><i id="icon" class="fa-solid fa-bell"></i></span></a>
-                <div class="collapse navbar-collapse" id="nav">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="invoice.php?id=<?php echo $room_id?>&invo=<?php echo $invo_id?>">Invoice</a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="container-fluid container-md mb-3">
+        <div class="box px-0">
+            <div class="box-header px-0">
+                <a class="nav-link border-0 btn fs-1 d-md-none" aria-current="page" href="index.php"><i class="fa-solid fa-house"></i></a>
+                <a class="nav-link border-0 btn fs-1 d-md-none" aria-current="page" href="invoice.php?id=<?php echo $room_id?>&invo=<?php echo $invo_id?>"><i class="fa-solid fa-sliders"></i></a>
+                <a class="nav-link btn border-0 bg-theme px-3 fs-4 py-2 d-none d-md-block" aria-current="page" href="index.php"><i class="fa-solid fa-house me-2"></i>Home</a>
+                <a class="nav-link btn border-0 bg-theme px-3 fs-4 py-2 d-none d-md-block" aria-current="page" href="invoice.php?id=<?php echo $room_id?>&invo=<?php echo $invo_id?>"><i class="fa-solid fa-sliders me-2"></i>Invoice</a>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
 
     <div class="container-fluid down-up" id="down-up" style="transform: translateY(101%);">
         <div id="container" onclick="containerDown()"></div>
@@ -79,34 +68,7 @@
 
     <div class="container-fluid bg-none">
         <div class="container-fluid my-4">
-            <h1 class="fs-2 fw-semibold m_had"><span>Table Number </span> <?php echo $room_name?></h1>
-        </div>
-
-        <div class="container-fluid mb-4 mt-5">
-            <form action="" method="">
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-10 col-md-6">
-                    <div class="search">
-                        <i class="fa fa-search"></i>
-                        <input type="text" class="form-control form-input" placeholder="Restaurants, Foods..">
-                    </div>
-                    </div>
-                    <div class="col-2 col-md-2">
-                    <div class="search-btn">
-                        <button class="btn"><i class="fa-solid fa-sliders"></i></button>
-                    </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div class="container-fluid mb-3">
-        <div class="box">
-            <div class="box-header">
-                <h4 class="fs-4 m-0">Explore Category</h4>
-                <i class="fa-solid fa-ellipsis d-md-none"></i>
-            </div>
+            <h1 class="fs-2 fw-semibold m_had"><span>Table </span> <?php echo $room_name?></h1>
         </div>
     </div>
 
