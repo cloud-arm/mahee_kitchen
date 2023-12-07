@@ -18,6 +18,8 @@ $result->execute();
 echo $room_id;
 
 for($i=0; $row = $result->fetch(); $i++){
+    $img=$row['img'];
+    if($img==''){ $path='img/rice.png'; }else{ $path='product_img/'.$img;}
     $ch=0; $pro_id=$row['id'];
     $result2 = $db->prepare("SELECT * FROM sales_list WHERE  invoice_no=:id AND product_id='$pro_id' ");
     $result2->bindParam(':id', $invo);
@@ -30,7 +32,7 @@ for($i=0; $row = $result->fetch(); $i++){
             <span class="head"><?php echo $row['product_name']?></span>
             <span class="sub-head"><?php echo $row['product_code']?></span>
             <div class="img-box">
-                <img src="img/rice.png" alt="">
+                <img src="<?php echo $path; ?>" alt="">
             </div>
             <div class="info-foot">
                 <span class="price">LKR. <?php echo $row['sell_price']?></span>
