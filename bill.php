@@ -142,7 +142,7 @@ $sec = "1";
 	
 
 	
-		<img style="margin-left: 90px;" src="mahee_logo.JPG" width="20%">
+		<img style="margin-left: 10px;" src="mahee_logo.JPG" width="40%">
 		
 	
 	<H3>
