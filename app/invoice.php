@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="dlt-box d-md-none delbutton" id="dlt-<?php echo $row['id']; ?>">
+                            <div class="dlt-box d-md-none delbutton" id="dlt-<?php echo $row['id']; ?>" value="<?php echo $row['id']; ?>">
                                 <a href="#<?php echo $row['id']; ?>" id="<?php echo $row['id']; ?>" class="nav-link">
                                     <i class="fa-solid fa-xmark"></i>
                                 </a>
@@ -193,8 +193,9 @@
         $(function() {
             $(".delbutton").click(function() {
                 var element = $(this);
-                var del_id = element.attr("id");
+                var del_id = element.attr("value");
                 var info = 'id=' + del_id;
+                console.log(info);
                 if (confirm("Sure you want to delete this Collection? There is NO undo!")) {
                     $.ajax({
                         type: "GET",
