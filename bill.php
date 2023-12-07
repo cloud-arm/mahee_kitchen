@@ -20,8 +20,10 @@ POS
     <style type="text/css">
 
 @media print {
-			img{
-				background-color: black !important;
+			tr{
+				color: black !important;
+				font-size: 18px !important;
+				font-weight: bold;
 			}
 		}
 
@@ -228,9 +230,9 @@ $qty=0;
 
 	
 
-			    <tr class="record" >
+			    <tr >
 
-				<td><?php echo $row['name']; ?> x <?php echo $row['qty']; ?></td>
+				<td > <b><?php echo $row['name']; ?> x <?php echo $row['qty']; ?></b> </td>
 
 				<td>
 
