@@ -18,9 +18,12 @@ POS
     <link rel="stylesheet" type="text/css" href="css/DT_bootstrap.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
     <style type="text/css">
-      .sidebar-nav {
-        padding: 9px 0;
-      }
+
+@media print {
+			img{
+				background-color: black !important;
+			}
+		}
 
     </style>
 
@@ -138,7 +141,10 @@ $sec = "1";
 
 	
 
-	<strong style=" font-size: 38px">MAHEE KITCHEN</strong>
+	
+		<img style="margin-left: 90px;" src="mahee_logo.JPG" width="20%">
+		
+	
 	<H3>
 	 NO.359/A,Main Street. 
 		  <br>
