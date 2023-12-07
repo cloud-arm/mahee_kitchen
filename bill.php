@@ -114,7 +114,7 @@ and get more free JavaScript, CSS and DHTML scripts! */
 
 $sec = "1";
 
-?><meta http-equiv="refresh" content="<?php echo $sec?>;URL='email_invoice/invoice.php?id=<?php echo $invoice; ?>'">	
+?><meta http-equiv="refresh" content="<?php echo $sec?>;URL='index.php'">	
 
 	
 
@@ -138,11 +138,11 @@ $sec = "1";
 
 	
 
-	<strong style="color: red; font-size: 30px">  ABC ENTERPRISES</strong>
+	<strong style=" font-size: 38px">MAHEE KITCHEN</strong>
 	<H3>
 	 NO.359/A,Main Street. 
 		  <br>
-	<b>Tel: 031-2233301,2222123 </b></b><BR><b>Email: ABC@gmail.com 	
+	<b>Tel: 031-2233301,2222123 </b></b>	
 		
     
 
@@ -170,14 +170,7 @@ $sec = "1";
 	<td>    Date-<?php echo $date ?></td>
 	
 </tr>
-	<tr>
-	<td>    Sales by -<?php echo $sales_man ?></td>
-	<td>    Vehicle no -<?php echo $vehicle ?></td>
-	</tr>
-	<tr>
-	<td>    Customer -<?php echo $cus ?></td>
-	<td> </td>
-	</tr>
+
 	</table>
 	</hr>
 
@@ -191,7 +184,7 @@ $sec = "1";
 </H3>
 	<div style="width: 100%; margin-top:-10px;">
 
-	<table border="0" cellpadding="4" cellspacing="0" style="text-align:left;" width="40%">
+	<table border="0" cellpadding="4" cellspacing="0" style="text-align:left;" width="50%">
 
 		<thead>
 
@@ -199,13 +192,13 @@ $sec = "1";
 
 				
 
-				<th width="100" style="font-size: 20px;" ><hr>Decs & qty<hr>**************************</th>
+				<th width="100" style="font-size: 20px;" ><hr>Decs & qty<hr></th>
 
-				<th width="10" style="font-size: 20px;" ><hr>price<hr>*******</th>
+				<th width="10" style="font-size: 20px;" ><hr>price<hr></th>
 
 				
 
-				<th width="50" style="font-size: 20px;" ><hr>Total<hr>******</th/>
+				<th width="50" style="font-size: 20px;" ><hr>Total<hr></th/>
 
 			</tr>
 
@@ -231,7 +224,7 @@ $qty=0;
 
 			    <tr class="record" >
 
-				<td class="record" ><b><h4><?php echo $row['code']; ?>_<?php echo $row['name']; ?> x <?php echo $row['qty']; ?></h4></b></td>
+				<td><?php echo $row['name']; ?> x <?php echo $row['qty']; ?></td>
 
 				<td>
 
@@ -331,23 +324,7 @@ $qty=0;
 				</tr>
 
 				
-		<tr>
-	<td colspan="2" style=" text-align:right;"><strong style="font-size: 20px; color: #222222;">
-					<?php
-					echo 'Credit Balance:';
-					?>&nbsp;
-
-					</strong></td>
-
-					<td colspan="2"><strong style="font:bold 18px 'Aleo';">
-
-					<?php
-			
-					
-					echo number_format($credit,2);
-					?>
-					</strong></td>
-				</tr>
+		
 						
 
 			<tr>
@@ -374,41 +351,21 @@ $qty=0;
 
 		</tbody>
 
-	</table>***************************************************************************
-
+	</table>
          <br>
 
 
-
-	<strong style=" font-size: 30px;">...:ස්තූතියි නැවත ඵන්න:..</strong>
-	  <br>
-	<strong style=" font-size: bold 18px;">විකුනූ භාණ්ඩ සදහා දින5කින් පසු වගකියනු නොලැබෙ</strong>
-
-	</div><strong style=" font-size: 16px;">#COLUD ARM software company(0779252594) </strong>
-
-	<div style="width: 370px; float:10 ">
-
-	<div class="content" id="content">
-
-<div style="margin: 0 auto; padding: 20px; width: 900px; font-weight: normal;">
-
-	<div style="width: 10%; height: 100px;" >  
-
-	
-
-	
-
-	</div>
-
-	</div>
-
-	</div>
+<br>
+	<strong style=" font-size: 25px; margin: 15px; ">THANK YOU COME AGAIN</strong>
+<br>
+	<strong style=" font-size: 16px; margin: 20px;">#software by CLOUD ARM (PVT) LTD </strong>
 
 
 
-</div>
 
-</div>
+
+
+
 
 
 

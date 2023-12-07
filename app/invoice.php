@@ -45,8 +45,8 @@
                         <span class="tot">LKR. <?php echo $total?></span>
                     </div>
                     <div class="type-box">
-                        <span class="btn click_fun" id="credit"><img src="img/visa-card.png" alt=""></span>
-                        <span class="btn click_fun active" id="cash"><img src="img/cash.png" alt=""></span>
+                        <span class="btn click_fun" id="Card"><img src="img/visa-card.png" alt=""></span>
+                        <span class="btn click_fun active" id="Cash"><img src="img/cash.png" alt=""></span>
                         <span class="btn click_fun" id="ruPay"><img src="img/LANKAQR_LOGO.png" alt=""></span>
                         <span class="btn click_fun" id="frimi"><img src="img/frimi.png" alt=""></span>
                     </div>
@@ -58,7 +58,8 @@
                         </div>
                     </div>
                     <input type="hidden" name="id" value="<?php echo $invo ?>" class="d-none" >
-                    <input type="hidden" name="p_type" id="pay_type" class="d-none" >
+                    <input type="hidden" name="p_type" id="pay_type" class="d-none" value="Cash" >
+                    
                     <input class="btn   " id="finish" type="submit" value="Finish">
                 </div>
             </div>

@@ -21,13 +21,28 @@
     background-color: rgb(var(--bg-light)) !important;
 }
 
+.bg-theme{
+    background-color: rgb(var(--bg-theme));
+}
+
 .bg-none{
     background-color: transparent !important;
 }
 
+@media (min-width: 992px){
+    .w-lg-100 {
+        width: 100%;
+    }
+}
+
 .m_had span {
-    font-size: 80%;
-    opacity: 0.5;
+    font-size: 25px !important;
+    color: rgb(var(--bg-black),0.5);
+}
+
+.m_had {
+    font-size: 35px;
+    color: rgb(var(--bg-theme));
 }
 
 .search{
@@ -319,6 +334,7 @@
     color: rgb(var(--bg-black));
 }
 
+.up-content .content input.btn,
 .up-content .content button.btn{
     width: 100%;
     padding: 15px;
@@ -401,11 +417,6 @@
     margin-left: 5px;
 }
 
-.back.btn{
-    padding: 5px 15px;
-    background-color: rgb(var(--bg-theme));
-    border-radius: 10px;
-}
 
 .bin.btn{
     font-size: 12px;

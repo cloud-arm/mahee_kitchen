@@ -17,6 +17,7 @@ $now=date("Y-m-d");
 $pay_total=$_POST['amount'];
 
 
+
 		
 
 
@@ -29,6 +30,7 @@ $result = $db->prepare("SELECT * FROM room WHERE invoice_no = '$invoice' ");
 		$cus_id = $row['cus_id'];
 		$in_date=$row['in_date'];
 		$in_time=$row['time'];
+		$room_no=$row['room_no'];
 		}
 		
 		
@@ -57,9 +59,9 @@ $balance = $amount-$pay_total;
 //$discount=$_POST['dis'];
 
 // query
-$sql = "INSERT INTO sales (invoice_number,amount,balance,profit,pay_type,pay_amount,date,customer_id,customer_name,action,discount) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO sales (invoice_number,amount,balance,profit,pay_type,pay_amount,date,customer_id,customer_name,action,discount,room_no) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 $ql = $db->prepare($sql);
-$ql->execute(array($invoice,$amount,$balance,$profit,$pay_type,$pay_total,$date,$cus_id,$cus_name,'active',$discount));
+$ql->execute(array($invoice,$amount,$balance,$profit,$pay_type,$pay_total,$date,$cus_id,$cus_name,'active',$discount,$room_no));
       
       
 $sql = "UPDATE room 
