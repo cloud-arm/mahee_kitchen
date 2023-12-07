@@ -146,9 +146,9 @@ $sec = "1";
 		
 	
 	<H3>
-	 NO.359/A,Main Street. 
+	 NO.320, Hirimbura Rd, Dangedara, Galle. 
 		  <br>
-	<b>Tel: 031-2233301,2222123 </b></b>	
+	<b>Tel: 077 336 6026 </b></b>	
 		
     
 
