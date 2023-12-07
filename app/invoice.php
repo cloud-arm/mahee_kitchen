@@ -27,7 +27,8 @@
     <div class="container-fluid mb-3">
         <div class="box">
             <div class="box-header">
-                <a href="order.php?id=<?php echo $room_id?>&invo=<?php echo $invo?>"><span class="back btn"><i class="fa-solid fa-chevron-left"></i></span></a>
+                <a class="nav-link border-0 btn fs-1 d-md-none" aria-current="page" href="order.php?id=<?php echo $room_id?>&invo=<?php echo $invo?>"><i class="fa-solid fa-chevron-left"></i></a>
+                <a class="nav-link btn border-0 bg-theme px-3 fs-4 py-2 d-none d-md-flex align-items-center" aria-current="page" href="order.php?id=<?php echo $room_id?>&invo=<?php echo $invo?>"><i class="fa-solid fa-chevron-left me-2"></i> Back</a>
                 <h4 class="fs-4 m-0 text-center w-100">Invoice</h4>
                 <i class="fa-solid fa-ellipsis-vertical d-md-none"></i>
             </div>
@@ -35,36 +36,40 @@
     </div>
 
     <div class="container-fluid down-up" id="down-up" style="transform: translateY(0px);" >
-        <div class="up-content">
-            <span class="closer" onclick="containerUp()"></span>
-            <div class="content">
-                <div class="tot-box">
-                    <span>Total</span>
-                    <span class="tot">LKR. <?php echo $total?></span>
-                </div>
-                <div class="type-box">
-                    <span class="btn click_fun"><img src="img/visa-card.png" alt=""></span>
-                    <span class="btn click_fun active"><img src="img/cash.png" alt=""></span>
-                    <span class="btn click_fun"><img src="img/LANKAQR_LOGO.png" alt=""></span>
-                    <span class="btn click_fun"><img src="img/frimi.png" alt=""></span>
-                </div>
-                <div class="pay-box">
-                    <label class="paid">Pay Amount</label>
-                    <div class="paid-amount">
-                        <label class="lbl">LKR.</label>
-                        <input type="number" class="form-control form-input bg-none" id="amount" value="0" onkeyup="checking()">
+        <form action="save_bill.php" method="POST" class="w-100 d-flex justify-content-center">
+            <div class="up-content">
+                <span class="closer" onclick="containerUp()"></span>
+                <div class="content">
+                    <div class="tot-box">
+                        <span>Total</span>
+                        <span class="tot">LKR. <?php echo $total?></span>
                     </div>
+                    <div class="type-box">
+                        <span class="btn click_fun" id="credit"><img src="img/visa-card.png" alt=""></span>
+                        <span class="btn click_fun active" id="cash"><img src="img/cash.png" alt=""></span>
+                        <span class="btn click_fun" id="ruPay"><img src="img/LANKAQR_LOGO.png" alt=""></span>
+                        <span class="btn click_fun" id="frimi"><img src="img/frimi.png" alt=""></span>
+                    </div>
+                    <div class="pay-box">
+                        <label class="paid">Pay Amount</label>
+                        <div class="paid-amount">
+                            <label class="lbl">LKR.</label>
+                            <input type="number" class="form-control form-input bg-none" name="amount" id="amount" value="0" onkeyup="checking()">
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="<?php echo $invo ?>" class="d-none" >
+                    <input type="hidden" name="p_type" id="pay_type" class="d-none" >
+                    <input class="btn   " id="finish" type="submit" value="Finish">
                 </div>
-                <button class="btn" id="finish">Finish</button>
             </div>
-        </div>
+        </form>
         <div id="container" onclick="containerDown()"></div>
     </div>
 
     <div class="container-fluid mb-3">
         <div class="box">
             <div class="box-body">
-                <div class="row">
+                <div class="row w-lg-100">
                     <?php 
                     $sql = "SELECT * FROM sales_list WHERE invoice_no='$invo'";                    
                     $result = $db->prepare($sql);
@@ -118,6 +123,11 @@
     <!-- <script src="js/style.js"></script> -->
 
     <script>
+
+        function finish_bill(){
+
+        }
+
         $(document).ready(function(){
 
             if(parseInt($('#amount').val()) == 0 | $('#amount').val() == ''){
@@ -126,7 +136,8 @@
 
             $(".click_fun").click(function() {
                 $(".click_fun").removeClass("active");
-                $(this).addClass("active");
+                $(this).addClass("active");  
+                $('#pay_type').val($(this).attr('id'));
             });
 
         });
@@ -184,28 +195,21 @@
                 var del_id = element.attr("id");
                 var info = 'id=' + del_id;
                 if (confirm("Sure you want to delete this Collection? There is NO undo!")) {
-
                     $.ajax({
                         type: "GET",
                         url: "item_list_dll.php",
                         data: info,
-                        success: function() {
-
-                        }
+                        success: function() {}
                     });
                     $(this).parents(".record").animate({
-                            backgroundColor: "#fbc7c7"
-                        }, "fast")
-                        .animate({
-                            opacity: "hide"
-                        }, "slow");
-
+                        backgroundColor: "#fbc7c7"
+                     }, "fast")
+                    .animate({
+                        opacity: "hide"
+                    }, "slow");
                 }
-
                 return false;
-
             });
-
         });
 
     </script>
