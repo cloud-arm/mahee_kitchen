@@ -35,8 +35,8 @@ $result->bindParam(':userid', $date);
  for($i=0; $row = $result->fetch(); $i++){
 	$id=$row['id']; 
 	 ?>
-	   <tr>
-				  <td><?php echo $row['id'];?></td>
+	   <tr class="record">
+				  <td><?php echo $row['id'];?></td> 
 				  <td><?php echo $row['product_name'];?></td>
                   <td><?php echo $row['product_code'];?></td>
                   <td><?php echo $row['sell_price'];?></td>
@@ -44,7 +44,8 @@ $result->bindParam(':userid', $date);
         <td><?php echo $row['qty'];?></td>
                   
 				  <td>
-					<a href="product_dll.php?id=<?php echo $id;?>" class="btn btn-danger btn-xs"><b>DELETE</b></a>
+					<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete" >
+				  <button class="btn btn-danger"><i class="icon-trash">x</i></button></a>
 					</td>
 				   
                 </tr>
