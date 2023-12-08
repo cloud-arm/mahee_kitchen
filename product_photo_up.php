@@ -39,7 +39,7 @@ $uploadPath = "app/product_img/";
 $status = $statusMsg = ''; 
 
     $status = 'error'; 
-    if(!empty($_FILES["fileToUpload"]["name"])) { 
+
         // File info 
         $fileName = date('ymdHis').'.'.pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION); 
         $imageUploadPath = $uploadPath . $fileName; 
@@ -63,9 +63,7 @@ $status = $statusMsg = '';
         }else{ 
             $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.'; 
         } 
-    }else{ 
-        $statusMsg = 'Please select an image file to upload.'; 
-    } 
+
 
 
 
