@@ -69,7 +69,8 @@ $status = $statusMsg = '';
 
 $sql = 'UPDATE  products SET img =? WHERE id =? ';
 $ql = $db->prepare($sql);
-$ql->execute(array($imageUploadPath,$_POST['id']));
+$ql->execute(array($fileName,$_POST['id']));
 
+header("location: product_view.php");
 
 ?>
