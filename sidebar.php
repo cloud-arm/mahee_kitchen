@@ -325,8 +325,8 @@
                 </li>
 
                 <li>
-                    <a href="booking.php">
-                        <i class="fa fa-bed"></i> <span>Booking</span>
+                    <a href="auto_print.php">
+                        <i class="fa fa-print"></i> <span>Auto Print</span>
                         <span class="pull-right-container">
 
                         </span>

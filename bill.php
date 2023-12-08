@@ -88,6 +88,10 @@ $result->execute();
 for($i=0; $row = $result->fetch(); $i++){
 $sales_man=$row['name'];
 }
+
+$sql = 'UPDATE  room SET print =? WHERE  invoice_no=? ';
+$ql = $db->prepare($sql);
+$ql->execute(array('0',$invoice));
 ?>
 
 
@@ -119,7 +123,7 @@ and get more free JavaScript, CSS and DHTML scripts! */
 
 $sec = "1";
 
-?><meta http-equiv="refresh" content="<?php echo $sec?>;URL='index.php'">	
+?><meta http-equiv="refresh" content="<?php echo $sec?>;URL='auto_print.php'">	
 
 	
 
@@ -300,36 +304,10 @@ $qty=0;
 
 				
 
-				<tr>
 
-					<td colspan="2"style=" text-align:right;"><strong style="font-size: 20px; color: #222222;">Pay amount</strong></td>
-
-					<td colspan="2"><strong style="font:bold 18px 'Aleo';">
-
-					<?php echo number_format($cash,2);	?>
-					</strong></td>
-
-				</tr>
 
 				
 
-				<tr>
-	<td colspan="2" style=" text-align:right;"><strong style="font-size: 20px; color: #222222;">
-					<?php
-					echo 'Balance:';
-					?>&nbsp;
-
-					</strong></td>
-
-					<td colspan="2"><strong style="font:bold 18px 'Aleo';">
-
-					<?php
-			
-					$amount1=$cash-$fgfg;
-					echo number_format($amount1,2);
-					?>
-					</strong></td>
-				</tr>
 
 				
 		
