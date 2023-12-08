@@ -14,6 +14,7 @@
                 <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Photo</th>
 				          <th>Name</th>
                   <th>Code</th>
                   <th>Sell Price</th>
@@ -37,6 +38,13 @@ $result->bindParam(':userid', $date);
 	 ?>
 	   <tr class="record">
 				  <td><?php echo $row['id'];?></td> 
+          <td><?php if($row['img']==''){?> 
+            <form action="product_photo_up.php" method="post" enctype="multipart/form-data">
+              <input type="file" name="fileToUpload" id="fileToUpload"  accept=".jpg, .jpeg, .png" >
+              <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
+              <input type="submit" name="submit" value="Upload" class="btn btn-info">
+            </form>
+          <?php } ?></td>
 				  <td><?php echo $row['product_name'];?></td>
                   <td><?php echo $row['product_code'];?></td>
                   <td><?php echo $row['sell_price'];?></td>
