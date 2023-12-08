@@ -45,7 +45,7 @@ $result->bindParam(':userid', $date);
               <input type="submit" name="submit" value="Upload" class="btn btn-info">
             </form>
           <?php }else{ ?>
-          <img src="app/product_img/<?php echo $row['img'] ?>" width="20%" alt="">
+          <img src="app/product_img/<?php echo $row['img'] ?>" width="50%" alt="">
           <?php } ?></td>
 				  <td><?php echo $row['product_name'];?></td>
                   <td><?php echo $row['product_code'];?></td>
