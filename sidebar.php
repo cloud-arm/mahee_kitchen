@@ -376,8 +376,8 @@
                     <ul class="treeview-menu">
                         <li><a href="sales_rp.php?d1=<?php echo date("Y-m-d");?>&d2=<?php echo date("Y-m-d");?>"><i
                                     class="fa fa-circle-o text-yellow"></i> Sales Report</a></li>
-                        <li><a href="package_rp.php?d1=<?php echo date("Y-m-d");?>&d2=<?php echo date("Y-m-d");?>"><i
-                                    class="fa fa-circle-o text-yellow"></i> Package Report</a></li>
+                        <li><a href="inventory_rp.php?d1=<?php echo date("Y-m-d");?>&d2=<?php echo date("Y-m-d");?>"><i
+                                    class="fa fa-circle-o text-yellow"></i> Inventory Report</a></li>
                     </ul>
                 </li>
 
