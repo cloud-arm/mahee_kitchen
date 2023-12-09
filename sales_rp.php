@@ -142,7 +142,7 @@ include_once("sidebar.php");
 
                                 <?php 
 					$tot+=$row['amount'];
-					$labor+=$row['amount']-$row['labor_cost'];
+					$labor=0;
 				}
 				
 				?>
