@@ -17,9 +17,9 @@
                   <th>Photo</th>
 				          <th>Name</th>
                   <th>Code</th>
-                  <th>Sell Price</th>
                   <th>Type</th>
-                  <th>QTY</th>
+                  <th>Sell Price</th>
+                  
 					        <th>#</th>
                 </tr>
 				
@@ -49,13 +49,18 @@ $result->bindParam(':userid', $date);
           <?php } ?></td>
 				  <td><?php echo $row['product_name'];?></td>
                   <td><?php echo $row['product_code'];?></td>
-                  <td><?php echo $row['sell_price'];?></td>
-				<td><?php echo $row['type'];?></td>
-        <td><?php echo $row['qty'];?></td>
+                  <td><?php echo $row['type'];?></td>
+                  <td><form action="product_price_update.php" method="post">
+                    <input type="text" name="price" value=" <?php echo $row['sell_price'];?>">
+                 
+                   </td>
+				
                   
 				  <td>
-					<a href="#" id="<?php echo $row['id']; ?>" class="delbutton" title="Click to Delete" >
-				  <button class="btn btn-danger"><i class="icon-trash">x</i></button></a>
+            <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
+            <input type="submit" value="Update" class="btn btn-info">
+          </form>
+					
 					</td>
 				   
                 </tr>
