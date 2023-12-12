@@ -42,7 +42,7 @@ $result->bindParam(':userid', $date);
             <form action="product_photo_up.php" method="post" enctype="multipart/form-data">
               <input type="file" name="fileToUpload" id="fileToUpload"  accept=".jpg, .jpeg, .png" >
               <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
-              <input type="submit" name="submit" value="Upload" class="btn btn-info">
+              <input type="submit" name="submit" value="Upload" class="btn btn-warning">
             </form>
           <?php }else{ ?>
           <img src="app/product_img/<?php echo $row['img'] ?>" width="50%" alt="">
