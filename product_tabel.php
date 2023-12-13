@@ -52,14 +52,14 @@ $result->bindParam(':userid', $date);
                   <td><?php echo $row['type'];?></td>
                   <td><form action="product_price_update.php" method="post">
                     <input type="text" name="price" value=" <?php echo $row['sell_price'];?>">
-                 
+                    <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
+            <input type="submit" value="Update" class="btn btn-info">
+          </form>
                    </td>
 				
                   
 				  <td>
-            <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
-            <input type="submit" value="Update" class="btn btn-info">
-          </form>
+           
 					
 					</td>
 				   
